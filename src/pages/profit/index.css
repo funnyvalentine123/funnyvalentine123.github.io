@@ -1,0 +1,165 @@
+.profit-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  color: #333;
+  padding-bottom: 20px;
+}
+
+/* 加载状态 */
+.profit-page.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-content {
+  font-size: 16px;
+  color: #666;
+}
+
+/* 顶部导航栏 */
+.profit-header {
+  background-color: #e53e3e;
+  color: white;
+  padding: 40px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.back-button {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.refresh-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* 收益概览卡片 */
+.profit-overview {
+  background-color: white;
+  margin: -16px 16px 16px;
+  border-radius: 12px;
+  padding: 20px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.overview-item {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+}
+
+.overview-label {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.overview-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 收益正负颜色 */
+.profit-positive {
+  color: #2e7d32; /* 绿色 - 正收益 */
+}
+
+.profit-negative {
+  color: #dc2626; /* 红色 - 负收益 */
+}
+
+/* 说明文字 */
+.profit-note {
+  font-size: 12px;
+  color: #999;
+  padding: 0 16px 12px;
+  line-height: 1.5;
+}
+
+/* 收益列表 */
+.profit-list {
+  padding: 0 16px;
+}
+
+.profit-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.profit-date {
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.profit-date::after {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #e53e3e;
+  margin: 0 8px;
+}
+
+.profit-amount {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: #999;
+  font-size: 14px;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .profit-overview {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .overview-item {
+    min-width: auto;
+  }
+
+  .profit-date {
+    font-size: 14px;
+  }
+
+  .profit-amount {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,109 @@
+/* Toast容器 */
+.toast-container {
+  position: fixed;
+  z-index: 9999;
+  top: 48vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none; /* 不阻挡下层点击 */
+}
+
+/* 位置控制 */
+.toast--top {
+  top: 20px;
+}
+.toast--middle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.toast--bottom {
+  bottom: 20px;
+}
+
+/* Toast基础样式 */
+.toast {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: auto; /* 自身可点击 */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: toastFadeIn 0.3s forwards;
+  transition: all 0.3s ease;
+}
+
+/* 动画效果 */
+@keyframes toastFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toast:hover {
+  opacity: 0.9;
+}
+
+/* 图标样式 */
+.toast__icon {
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* 类型样式 */
+.toast--default {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.toast--success {
+  background-color: rgba(46, 125, 50, 0.8);
+}
+.toast--error {
+  background-color: rgba(220, 38, 38, 0.8);
+}
+.toast--warning {
+  background-color: rgba(245, 158, 11, 0.8);
+}
+
+.toast__icon--success {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.toast__icon--error {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.toast__icon--warning {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 关闭按钮 */
+.toast__close-btn {
+  margin-left: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.8;
+}
+.toast__close-btn:hover {
+  opacity: 1;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .toast {
+    max-width: 80%;
+    text-align: center;
+  }
+}

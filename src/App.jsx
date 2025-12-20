@@ -9,6 +9,7 @@ import GlobalLoading from './component/loading';
 import './App.css';
 
 const datalist = [
+  { date: '2025-12-19', count: 2000 },
   { date: '2025-11-23', count: 2000 },
   { date: '2025-11-14', count: 2000 },
   { date: '2025-10-31', count: 2000 },

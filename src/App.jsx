@@ -9,6 +9,8 @@ import GlobalLoading from './component/loading';
 import './App.css';
 
 const datalist = [
+  { date: '2026-04-03', count: 2000 },
+  // 上面部分可分割成单独区块
   { date: '2026-02-06', count: 2000 },
   { date: '2026-01-16', count: 2000 },
   { date: '2025-12-19', count: 2000 },

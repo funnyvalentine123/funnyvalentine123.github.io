@@ -3,6 +3,7 @@ import FinancePage from './pages/home'
 import TransactionRecord from './pages/trade'
 import MyDt from './pages/mydt'
 import ProfitDetail from './pages/profit'
+import ProductPage from './pages/product'
 import {calculateTotalCount, calculateProfit} from './component/utils'
 import { ToastProvider } from './component/toast';
 import GlobalLoading from './component/loading';
@@ -34,7 +35,7 @@ const datalist = [
   { date: '2025-08-29', count: 1000 },
 ];
 
-const isPro = window.location.pathname === '/pro';
+const isPro = new URLSearchParams(window.location.search).get('pro') === '1';
 const activeData = isPro ? datalist2 : datalist;
 
 const result = calculateProfit(calculateTotalCount(activeData), '2025-08-30', new Date().toISOString().split('T')[0], true);
@@ -61,6 +62,8 @@ export default () => {
         return <MyDt onBack={() => {jump('homepage')}}/>
       case 'profit':
         return <ProfitDetail data={activeData} totalProfit={result.totalProfit} onBack={() => {jump('homepage')}}/>
+      case 'products':
+        return <ProductPage onBack={() => {jump('homepage')}}/>
       default:
         return <></>;
     }

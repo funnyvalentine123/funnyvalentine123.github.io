@@ -1,6 +1,16 @@
+import { useState, useEffect } from 'react';
 import './index.css';
 import { useToast } from '../../component/toast';
 import { calculateTotalCount, formatAmount, splitArrayByLastN } from '../../component/utils';
+
+const newsList = [
+  '【增值优选理财】三个月后到期产品收益均达基准',
+  '【重要公告】建设银行关于调整部分个人存款产品利率的公告（2026年第5号）',
+  '【理财月报】多宝理财系列产品累计服务客户突破50万户',
+  '【市场解读】央行今日开展1500亿元逆回购操作，利率维持不变',
+  '【积分兑换】即日起至6月30日，理财积分可兑换话费及商超卡',
+  '【风险提示】谨防以"高收益理财"为名的非法集资活动',
+];
 
 const FinancePage = ({
     data,
@@ -8,7 +18,20 @@ const FinancePage = ({
     totalProfit,
     isPro = false
 }) => {
-  const { showToast, closeAllToasts } = useToast();
+  const { showToast } = useToast();
+  const [newsIndex, setNewsIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setNewsIndex(prev => (prev + 1) % newsList.length);
+        setFade(true);
+      }, 300);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
   const total = formatAmount(calculateTotalCount(data) + totalProfit)
   const dyb = formatAmount(calculateTotalCount(splitArrayByLastN(data, 6).backArr))
   const nnb = formatAmount(calculateTotalCount(splitArrayByLastN(data, 6).frontArr))
@@ -50,16 +73,16 @@ const FinancePage = ({
           <div className="btn-icon">📊</div>
           <div className="btn-text">收益明细</div>
         </div>
-        <div className="function-btn">
+        <div className="function-btn" onClick={() => {goto('products')}}>
           <div className="btn-icon">...</div>
           <div className="btn-text">其他</div>
         </div>
       </div>}
 
-      {/* 推广信息 */}
+      {/* 推广信息 - 滚动新闻 */}
       {!isPro && <div className="promotion-card">
         <span className="tag">巡礼</span>
-        <span className="promo-text">【增值优选理财】三个月后到期产品收益均达基准</span>
+        <span className={`promo-text ${fade ? 'fade-in' : 'fade-out'}`} key={newsIndex}>{newsList[newsIndex]}</span>
       </div>}
 
       {/* 持仓列表 */}
@@ -108,7 +131,7 @@ const FinancePage = ({
 
       {/* 底部导航 */}
       <nav className="bottom-nav">
-        <div className="nav-item">
+        <div className="nav-item" onClick={() => {goto('products')}}>
           <div className="nav-icon">📦</div>
           <div className="nav-text">产品</div>
         </div>

@@ -149,6 +149,28 @@
   font-size: 14px;
   color: #e53e3e;
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.promo-text.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.promo-text.fade-out {
+  animation: fadeOut 0.3s ease-out;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-4px); }
 }
 
 /* 持仓列表 */

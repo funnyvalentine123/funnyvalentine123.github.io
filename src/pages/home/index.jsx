@@ -5,7 +5,8 @@ import { calculateTotalCount, formatAmount, splitArrayByLastN } from '../../comp
 const FinancePage = ({
     data,
     goto,
-    totalProfit
+    totalProfit,
+    isPro = false
 }) => {
   const { showToast, closeAllToasts } = useToast();
   const total = formatAmount(calculateTotalCount(data) + totalProfit)
@@ -36,7 +37,7 @@ const FinancePage = ({
       </div>
 
       {/* 功能按钮区域 */}
-      <div className="function-buttons">
+      {!isPro && <div className="function-buttons">
         <div className="function-btn" onClick={() => {goto('mydt')}}>
           <div className="btn-icon">📅</div>
           <div className="btn-text">我的定投</div>
@@ -53,13 +54,13 @@ const FinancePage = ({
           <div className="btn-icon">...</div>
           <div className="btn-text">其他</div>
         </div>
-      </div>
+      </div>}
 
       {/* 推广信息 */}
-      <div className="promotion-card">
+      {!isPro && <div className="promotion-card">
         <span className="tag">巡礼</span>
         <span className="promo-text">【增值优选理财】三个月后到期产品收益均达基准</span>
-      </div>
+      </div>}
 
       {/* 持仓列表 */}
       <div className="holdings-section">
@@ -71,7 +72,7 @@ const FinancePage = ({
         <div className="product-group">
           <div className="group-title">多宝理财  No. v323980</div>
           
-          <div className="product-item" onClick={() => {
+          {!isPro && <div className="product-item" onClick={() => {
             showToast({ message: '该产品赎回入口还有137天开放,详情请咨询柜台' });
           }}>
             <div className="product-name">年年宝</div>
@@ -85,7 +86,7 @@ const FinancePage = ({
               <span>持仓收益</span>
               <span></span>
             </div>
-          </div>
+          </div>}
           
           <div className="product-item" onClick={() => {
             showToast({ message: '该产品赎回入口还有129天开放,详情请咨询柜台' });

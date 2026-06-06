@@ -8,9 +8,13 @@ import { ToastProvider } from './component/toast';
 import GlobalLoading from './component/loading';
 import './App.css';
 
-const datalist = [
+const datalist2 = [
+  { date: '2026-06-05', count: 2000 },
   { date: '2026-05-15', count: 2000 },
-  { date: '2026-04-03', count: 2000 },
+  { date: '2026-04-03', count: 2000 }
+]
+
+const datalist = [
   // 上面部分可分割成单独区块
   { date: '2026-02-06', count: 2000 },
   { date: '2026-01-16', count: 2000 },
@@ -30,7 +34,10 @@ const datalist = [
   { date: '2025-08-29', count: 1000 },
 ];
 
-const result = calculateProfit(calculateTotalCount(datalist), '2025-08-30', new Date().toISOString().split('T')[0], true);
+const isPro = window.location.pathname === '/pro';
+const activeData = isPro ? datalist2 : datalist;
+
+const result = calculateProfit(calculateTotalCount(activeData), '2025-08-30', new Date().toISOString().split('T')[0], true);
 
 export default () => {
   const [currentPage, setCurrentPage] = useState('homepage');
@@ -47,13 +54,13 @@ export default () => {
   const renderPage = () => {
     switch (currentPage) {
       case 'homepage':
-        return <FinancePage data={datalist} totalProfit={result.totalProfit} goto={(page) => {jump(page)}}/>
+        return <FinancePage data={activeData} totalProfit={result.totalProfit} isPro={isPro} goto={(page) => {jump(page)}}/>
       case 'traderecord':
-        return <TransactionRecord data={datalist} onBack={() => {jump('homepage')}}/>
+        return <TransactionRecord data={activeData} onBack={() => {jump('homepage')}}/>
       case 'mydt':
         return <MyDt onBack={() => {jump('homepage')}}/>
       case 'profit':
-        return <ProfitDetail data={datalist} totalProfit={result.totalProfit} onBack={() => {jump('homepage')}}/>
+        return <ProfitDetail data={activeData} totalProfit={result.totalProfit} onBack={() => {jump('homepage')}}/>
       default:
         return <></>;
     }

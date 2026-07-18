@@ -60,7 +60,7 @@ const FinancePage = ({
       </div>
 
       {/* 功能按钮区域 */}
-      {!isPro && <div className="function-buttons">
+      <div className="function-buttons">
         <div className="function-btn" onClick={() => {goto('mydt')}}>
           <div className="btn-icon">📅</div>
           <div className="btn-text">我的定投</div>
@@ -77,13 +77,13 @@ const FinancePage = ({
           <div className="btn-icon">...</div>
           <div className="btn-text">其他</div>
         </div>
-      </div>}
+      </div>
 
       {/* 推广信息 - 滚动新闻 */}
-      {!isPro && <div className="promotion-card">
+      <div className="promotion-card">
         <span className="tag">巡礼</span>
         <span className={`promo-text ${fade ? 'fade-in' : 'fade-out'}`} key={newsIndex}>{newsList[newsIndex]}</span>
-      </div>}
+      </div>
 
       {/* 持仓列表 */}
       <div className="holdings-section">

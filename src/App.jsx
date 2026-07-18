@@ -10,6 +10,8 @@ import GlobalLoading from './component/loading';
 import './App.css';
 
 const datalist2 = [
+  { date: '2026-07-17', count: 2000 },
+  { date: '2026-06-27', count: 2000 },
   { date: '2026-06-05', count: 2000 },
   { date: '2026-05-15', count: 2000 },
   { date: '2026-04-03', count: 2000 }

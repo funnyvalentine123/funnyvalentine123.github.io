@@ -22,7 +22,6 @@ const datalist2 = [
 const datalist = [
   { date: '2026-09-04', count: 3500 },
   { date: '2026-02-06', count: 2000 },
-  { date: '2026-02-06', count: 2000 },
   { date: '2026-01-16', count: 2000 },
   { date: '2025-12-19', count: 2000 },
   { date: '2025-11-23', count: 2000 },
